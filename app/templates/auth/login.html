@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block style %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/auth.css') }}">
+{% endblock %}
+{% block app_content %}
+    <body>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button"
+                        data-dismiss="alert"
+                        class="close"
+                >&times;</button>
+                {{message}}
+            </div>
+        {% endfor %}
+        <div class="region container">
+            <div id="header">
+                <span><img style="color: white;" src="{{ url_for('static', filename='IMG/icono1.png') }}" width="200px"></span>
+                <span><p id="title_header">Inicia Sesión</p></span>
+            </div>
+            <div id="tabs" class="tab-content">
+                <form id="login_form" class="tab-pane fade active in" name="login_form" method="post">
+                    <div class="item">
+                        {{ wtf.form_field(login_form.user_name, class="form-control field", placeholder="Nombre de usuario o Correo") }}
+                        <p class="alert-text"></p>
+                    </div>
+                    <div class="item">
+                        {{ wtf.form_field(login_form.password, class="form-control field", placeholder="Contraseña") }}
+                        <p class="alert-text"></p>
+                    </div>
+                    {{ wtf.form_field(login_form.login, class="btn") }}
+                </form>
+                <form id="register_form" class="tab-pane fade" name="register_form" method="post">
+                    <div id="items_1">
+                        <div class="item">
+                            {{ wtf.form_field(register_form.n_user_name, class="form-control field text-field", placeholder="Nombre de usuario") }}
+                            <p class="alert-text"></p>
+                        </div>
+                        <div class="item">
+                            {{ wtf.form_field(register_form.n_email, class="form-control field email-field", placeholder="Correo electrónico") }}
+                            <p class="alert-text"></p>
+                        </div>
+                    </div>
+                    <div id="items_2">
+                        <div class="item">
+                            {{ wtf.form_field(register_form.n_password, class="form-control field psswd-field", placeholder="Contraseña") }}
+                            {{ wtf.form_field(register_form.repeat_psswd, class="form-control field psswd-c-field", placeholder="Repetir Contr.") }}
+                            <p class="alert-text"></p>
+                        </div>
+                    </div>
+                    {{ wtf.form_field(register_form.register, class="btn") }}
+                </form>
+                <div id="btn_container">
+                    <input class="btn btn-tabs" id="register_tab" name="register_tab" type="button" value="¿No tienes cuenta? Regístrate" role="tab" data-toggle="tab" href="#register_form">
+                    <input style="display: none;" class="btn btn-tabs" id="login_tab" name="login_tab" type="button" value="¿Tienes cuenta? Inicia Sesión" role="tab" data-toggle="tab" href="#login_form">
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='JS/globalJS.js') }}"></script>
+        <script src="{{ url_for('static', filename='JS/login.js') }}"></script>
+        <script src="{{ url_for('static', filename='JS/validation.js') }}"></script>
+    </body>
+{% endblock  %}

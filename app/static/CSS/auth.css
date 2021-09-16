@@ -1,0 +1,90 @@
+body {
+    background: url('/static/IMG/fondo1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    position: relative;
+}
+.region{
+width: 500px;
+position: absolute;
+top: 70px;right: 150px;
+
+}
+#header{
+position: relative;
+margin: auto 130px;
+}
+#header p{
+font-size: 30px;
+color: #146662;
+width: 180px;
+margin: auto 20px;
+}
+.field{
+/*background-color: #bca8db;*/
+background-color: transparent;
+border: 2px solid #bca8db;
+border-radius: 15px;
+color: #A0A0A0;
+font-weight: bold;
+letter-spacing: 2px;
+}
+::placeholder{
+color: #ff6cab;
+font-weight: normal;
+}
+label{
+color: white;
+}
+.btn{
+width: 470px;
+background-color: transparent;
+border: transparent;
+}
+#login, #register{
+color: #146662;
+transition: .5s ease-in-out .1s;
+}
+#register_tab, #login_tab{
+color: #bc0967;
+transition: .5s ease-in-out .1s;
+}
+#login:hover{
+border: 1px solid #A0A0A0;
+}
+#register_tab:hover{
+border: 1px solid #A0A0A0;
+}
+#login_tab:hover{
+border: 1px solid #A0A0A0;
+}
+#register:hover{
+border: 1px solid #A0A0A0;
+}
+#btn_container{
+margin-bottom: 38px;
+}
+#register_form, .item{
+position: relative;
+}
+#n_password, #repeat_psswd{
+position: absolute;
+width: 230px;
+}
+#n_password{
+/*top: 150px;
+bottom: 120px;*/
+float: left;
+left: 0;
+}
+#repeat_psswd{
+float: left;
+right: 0;
+margin: -35px auto;
+}
+.item .alert-text{
+margin: -10px 0 10px 5px;
+display: none;
+}

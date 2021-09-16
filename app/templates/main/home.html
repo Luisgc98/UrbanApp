@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block style %}
+    {{ super() }}
+    <style type="text/css">
+        body{
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            position: relative;
+        }
+        .navbar{
+            background-color: #250700;
+        }
+        span{
+            color: white;
+        }
+        .alert{
+            position: absolute;
+            top: 50px;
+            width: 100%;
+        }
+    </style>
+{% endblock  %}
+{% block app_content %}
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><span>Inicio</span></a>
+                    <span><img width="50px" src="{{ url_for('static', filename='IMG/icono1.png') }}" alt="icon-tatto"></span>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{{ user.user_email_tat }}</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button"
+                        data-dismiss="alert"
+                        class="close"
+                >&times;</button>
+                {{message}}
+            </div>
+        {% endfor %}
+    </body>
+{% endblock  %}

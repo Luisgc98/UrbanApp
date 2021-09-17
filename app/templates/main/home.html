@@ -20,6 +20,16 @@
             top: 50px;
             width: 100%;
         }
+        #side_bar{
+            position: fixed;
+            height: 100%;
+            width: 5%;
+            margin-top: -20px;
+        }
+        .navbar li:hover{
+            color: black;
+            background-color: #250700;
+        }
     </style>
 {% endblock  %}
 {% block app_content %}
@@ -51,5 +61,10 @@
                 {{message}}
             </div>
         {% endfor %}
+        <nav class="navbar" id="side_bar">
+            <ul class="nav">
+                <li class="active"><a href="#">Tatto</a></li>
+            </ul>
+        </nav>
     </body>
 {% endblock  %}

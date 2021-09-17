@@ -3,6 +3,7 @@ from .config import Config
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -15,6 +16,7 @@ def create_app(config=Config):
     Bootstrap().init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    Migrate().init_app(app, db)
 
     from .auth import auth
     app.register_blueprint(auth)

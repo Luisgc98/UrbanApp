@@ -17,8 +17,9 @@
         }
         .alert{
             position: absolute;
-            top: 50px;
-            width: 100%;
+            top: 51px;
+            width: 95%;
+            margin-left: 66px;
         }
         #side_bar{
             position: fixed;
@@ -30,6 +31,12 @@
             color: black;
             background-color: #250700;
         }
+
+        #side_bar ul img{
+            margin-left: -3px;
+            margin-bottom: 6px;
+            
+        }
     </style>
 {% endblock  %}
 {% block app_content %}
@@ -37,7 +44,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><span>Inicio</span></a>
+                    <a class="navbar-brand" href="javascript:location.reload()"><span>Inicio</span></a>
                     <span><img width="50px" src="{{ url_for('static', filename='IMG/icono1.png') }}" alt="icon-tatto"></span>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
@@ -63,7 +70,9 @@
         {% endfor %}
         <nav class="navbar" id="side_bar">
             <ul class="nav">
-                <li class="active"><a href="#">Tatto</a></li>
+                <li class="active"><a href="#"><img src="{{ url_for('static', filename='IMG/maquina-de-tatuaje.png') }}" alt="tatto" height="40px"></a></li>
+                <li ><a href="#"><img src="{{ url_for('static', filename='IMG/skateboard.png') }}" alt="tatto" height="40px"></a></li>
+                <li ><a href="#"><img src="{{ url_for('static', filename='IMG/grafiti.png') }}" alt="tatto" height="40px"></a></li>
             </ul>
         </nav>
     </body>

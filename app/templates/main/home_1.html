@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block style %}
+    {{ super() }}
+    <style type="text/css">
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+        nav{
+            background-color: #250700;
+        }
+        #navbar_head{
+            background-color: #250700;
+        }
+        #navbar_left{
+            position: fixed;
+            height: 100%;
+            width: 4%;
+            margin-top: 1.5px;
+            transition: all .15s ease-in-out .1s;
+        }
+        .alert{
+            position: absolute;
+            top: 51px;
+            width: 95%;
+            margin-left: 62px;
+        }
+        .navbar-opc{
+            text-decoration: none;
+            list-style: none;
+            display: block;
+            padding: 10px;
+            margin-left: -3px;
+            transition: all .15s ease-in-out .1s;
+            border-radius: 3px;
+        }
+        .navbar-opc:hover{
+            background-color: #000219;
+        }
+        #icon_menu, #icon_menu_close{
+            margin-left: -15px;
+            margin-top: -8px;
+        }
+        .change_icon_menu{
+            display: none;
+        }
+        #txt_home a span{
+            margin: 10px;
+            position: relative;
+            top: 6px;
+        }
+        #txt_home img{
+            position: relative;
+            top: 3px;
+        }
+        .opc-text{
+            align-content: flex-end;
+            text-align: end;
+            position: relative;
+            margin-top: -28px;
+            font-size: 17px;
+            display: none;
+        }
+    </style>
+{% endblock style %}
+{% block app_content %}
+    <body>
+        <nav id="navbar_head">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a id="icon_menu" class="navbar-brand" href="javascript:desplNavleft();"><img src="{{ url_for('static', filename='IMG/barras-de-menu-de-la-derecha.png') }}" alt="tatto" height="30px"></a>
+                    <a id="icon_menu_close" class="navbar-brand" href="javascript:closeNavleft();" style="display: none;"><img src="{{ url_for('static', filename='IMG/menu.png') }}" alt="tatto" height="30px"></a>
+                    <span id="txt_home">
+                        <a href="javascript:location.reload()">
+                            <span>Inicio</span>
+                        </a>
+                        <img width="35px" src="{{ url_for('static', filename='IMG/craneo.png') }}" alt="icon-tatto">
+                    </span>
+                </div>
+                <ul class="navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{{ user.user_email_tat }}</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button"
+                        data-dismiss="alert"
+                        class="close"
+                >&times;</button>
+                {{message}}
+            </div>
+        {% endfor %}
+        <nav id="navbar_left">
+            <a class="navbar-opc" href="#">
+                <img src="{{ url_for('static', filename='IMG/maquina-de-tatuaje.png') }}" alt="tatto" height="40px">
+                <p class="opc-text">Tatuajes</p>
+            </a>
+            <a class="navbar-opc" href="#">
+                <img src="{{ url_for('static', filename='IMG/skateboard.png') }}" alt="tatto" height="40px">
+                <p class="opc-text">Skateboarding</p>
+            </a>
+            <a class="navbar-opc" href="#">
+                <img src="{{ url_for('static', filename='IMG/grafiti.png') }}" alt="tatto" height="40px">
+                <p class="opc-text">Graffiti</p>
+            </a>
+        </nav>
+        <script type="text/javascript">
+            function desplNavleft(){
+                $("#icon_menu").hide();
+                $("#icon_menu_close").show(200);
+                $("#navbar_left").css({
+                    'width':'13%'
+                })
+                $(".opc-text").show(400);
+            }
+            function closeNavleft(){
+                $("#icon_menu_close").hide();
+                $("#icon_menu").show(200);
+                $("#navbar_left").css({
+                    'width':'4%'
+                })
+                $(".opc-text").hide(150);
+            }
+        </script>
+    </body>
+{% endblock app_content %}
